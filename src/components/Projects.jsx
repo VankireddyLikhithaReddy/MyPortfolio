@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { projects } from '../data/portfolioData.jsx';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaDatabase, FaUniversalAccess, FaCode } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaDatabase, FaUniversalAccess, FaCode, FaComments } from 'react-icons/fa';
 import { SiFirebase } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
@@ -11,6 +11,7 @@ const projectIconMap = {
   FaReact,
   SiFirebase,
   FaDatabase,
+  FaComments,
   FaCode,
 };
 
@@ -67,9 +68,9 @@ const ProjectCard = ({ project, index }) => {
           {project.iconName && <div>{getProjectIcon(project.iconName)}</div>}
         </div>
         <p className="text-xs text-text-secondary font-mono">{project.date} | {project.category}</p>
-        <p className="text-sm text-text-secondary flex-grow leading-relaxed text-left">{project.description}</p>
-        
-        <div className="pt-1">
+        <p className="text-sm text-text-secondary leading-relaxed text-left">{project.description}</p>
+
+        <div className="mt-auto pt-1">
           <h4 className="text-sm font-semibold text-text-primary font-mono mb-2">Tech Stack:</h4>
           <div className="flex flex-wrap gap-2 pb-1">
             {(project.tech || []).map((tech, i) => (
@@ -78,53 +79,53 @@ const ProjectCard = ({ project, index }) => {
               </span>
             ))}
           </div>
-        </div>
 
-        <div className="mt-auto flex flex-wrap items-center gap-4 pt-5 border-t border-primary-bg">
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
-              aria-label={`GitHub repository for ${project.title}`}
-            >
-              <FaGithub size={20} className="mr-1" /> <span className="font-mono text-sm">Code</span>
-            </a>
-          )}
-          {project.award && (
-            <a
-              href={project.award}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
-              aria-label={`Certificate for ${project.title}`}
-            >
-              <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Certificate</span>
-            </a>
-          )}
-          {project.liveLink2 && (
-            <a
-              href={project.liveLink2}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
-              aria-label={`Live demo of ${project.title}`}
-            >
-              <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Demo</span>
-            </a>
-          )}
-          {project.liveLink && (
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
-              aria-label={`Live demo of ${project.title}`}
-            >
-              <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Live</span>
-            </a>
-          )}
+          <div className="flex flex-wrap items-center gap-4 pt-5 border-t border-primary-bg">
+            {project.githubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
+                aria-label={`GitHub repository for ${project.title}`}
+              >
+                <FaGithub size={20} className="mr-1" /> <span className="font-mono text-sm">Code</span>
+              </a>
+            )}
+            {project.award && (
+              <a
+                href={project.award}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
+                aria-label={`Certificate for ${project.title}`}
+              >
+                <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Certificate</span>
+              </a>
+            )}
+            {project.liveLink2 && (
+              <a
+                href={project.liveLink2}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
+                aria-label={`Live demo of ${project.title}`}
+              >
+                <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Demo</span>
+              </a>
+            )}
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-accent-1 transition-colors flex items-center"
+                aria-label={`Live demo of ${project.title}`}
+              >
+                <FaExternalLinkAlt size={18} className="mr-1" /> <span className="font-mono text-sm">Live</span>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

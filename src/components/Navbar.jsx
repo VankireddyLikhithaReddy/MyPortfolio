@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
-import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSun, FaMoon, FaUsers, FaCertificate } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const navItems = [
@@ -9,7 +9,9 @@ const navItems = [
   { name: 'About', to: 'about' },
   { name: 'Skills', to: 'skills' },
   { name: 'Projects', to: 'projects' },
-  { name: 'Experience', to: 'Leadership&Involvement' },
+  { name: 'Certifications', to: 'certifications'},
+  { name: 'Experience', to: 'experience' },
+  { name: 'Involvement', to: 'involvement'},
   { name: 'Contact', to: 'contact' },
 ];
 
@@ -65,10 +67,11 @@ const Navbar = () => {
               smooth={true}
               duration={500}
               offset={-70} // Adjust offset based on navbar height
-              className="text-text-secondary hover:text-accent-1 font-mono transition-colors cursor-pointer"
+              className="text-text-secondary hover:text-accent-1 font-mono transition-colors cursor-pointer flex items-center gap-2"
               activeClass="text-accent-1"
               spy={true}
             >
+              {item.icon ? <item.icon className="text-sm" /> : null}
               {item.name}
             </ScrollLink>
           ))}
@@ -120,7 +123,10 @@ const Navbar = () => {
               spy={true}
               onClick={() => setIsOpen(false)}
             >
-              {item.name}
+              <span className="flex items-center gap-2">
+                {item.icon ? <item.icon className="text-sm" /> : null}
+                {item.name}
+              </span>
             </ScrollLink>
           ))}
           <div className="flex items-center justify-between px-4 py-3">

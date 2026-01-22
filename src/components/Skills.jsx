@@ -67,7 +67,6 @@ const iconMap = {
   SiNumpy,
   SiApachekafka,
   SiApachespark,
-  // SiAmazonaws,
 };
 
 const getIcon = (iconName) => {

@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/durgasantosh-g/",
   github: "https://github.com/santosh1664",
   resumeLink: "/Durgasantosh_G_Software_Engineer.pdf", // Make sure your resume is in public/
-  bio: "Engineer focused on cloud-native development, microservices, and scalable data pipelines using React, Java, Python, AWS, and Kubernetes.",
+  bio: "Software Engineer with 3+ years of experience across full-stack development, building scalable applications using Java, Spring Boot, React, and AWS. Experienced in microservices, CI/CD pipelines, and delivering enterprise-grade systems in Agile environments.",
   shortBio: "I build things for the web." // For Hero section
 };
 
@@ -23,23 +23,86 @@ export const education = [
     institution: " Vellore Institute of Technology(VIT), Chennai",
     degree: "Bachelor of Technology in Computer Science",
     duration: "Aug 2019 – May 2023",
-    // score: "CGPA: 8.17/10",
   },
-  // {
-  //   institution: "Namdev Public School",
-  //   degree: "Class 12th CBSE",
-  //   duration: "April 2022 - May 2023",
-  //   score: "96.5%",
-  // },
-  // {
-  //   institution: "Namdev Public School",
-  //   degree: "Class 10th CBSE",
-  //   duration: "April 2020 - May 2021",
-  //   score: "95.17%",
-  // },
+
+];
+
+export const certifications = [
+  {
+    title: "AWS Certified Developer - Associate",
+    issuer: "Amazon Web Services",
+    issued: "January 19, 2026",
+    expires: "January 19, 2029",
+    validationId: "70b6a9b194264fe6bae7094c4bb4de34",
+    verifyUrl: "https://aws.amazon.com/verification",
+    image: "/aws-certified-developer-associate.png",
+  },
+];
+
+export const experience = [
+  {
+    role: "Software Engineer",
+    company: "Citi Group",
+    location: "Dallas, Texas, USA",
+    duration: "May 2025 – Present",
+    tech: [
+      "React.js",
+      "Java 17",
+      "Spring Boot",
+      "Spring Cloud",
+      "Apache Kafka",
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "Jenkins"
+    ],
+    points: [
+      "Build and maintain full-stack features for enterprise platforms.",
+      "Deliver scalable services and resilient integrations across teams.",
+      "Support testing, deployment, and production reliability workflows."
+    ],
+  },
+  {
+    role: "Software Developer",
+    company: "Zensar Technologies",
+    location: "India",
+    duration: "Jun 2021 – Jul 2023",
+    tech: [
+      "React",
+      "Angular",
+      "Java",
+      "Spring Boot",
+      "Microservices",
+      "Apache Kafka",
+      "AWS"
+    ],
+    points: [
+      "Contributed to end-to-end full-stack development initiatives.",
+      "Built frontend experiences and backend services with Java and Spring Boot.",
+      "Supported microservices and event-driven workflows with Kafka."
+    ],
+  },
 ];
 
 export const projects = [
+  {
+    title: "Agentic AI Resume Chatbot with RAG (In Progress)",
+    tech: [
+      "React",
+      "Rule-Based NLP",
+      "RAG Pipeline",
+      "Embeddings",
+      "Intent Routing",
+      "Prompt Templates"
+    ],
+    description:
+      "Building an interactive resume chatbot that uses AI-style patterns like intent routing, embeddings, and retrieval-augmented generation (RAG) over structured resume data to answer recruiter questions instantly. Features a guided category menu, quick question chips, and a recruiter-focused UX with eye-catching micro-interactions for fast screening.",
+    date: "Jan 2025 – Present",
+    githubLink: null,
+    liveLink: null,
+    category: "Ongoing Project",
+    iconName: "FaComments",
+  },
   {title: "Accessible Weather & Shelter Finder",
     tech: ["React", "Node.js", "MongoDB", "Text-to-Speech", "Geolocation", "Accessibility"],
     description:"Currently building an accessible, life-saving web application for blind and visually impaired users. Provides real-time weather updates, severe weather alerts, and nearest shelter locations with full accessibility support including keyboard navigation, high-contrast UI, shortcut keys, and integrated text-to-speech.",
@@ -53,7 +116,7 @@ export const projects = [
     tech: ["Python", "TensorFlow", "PyTorch", "OCR", "NLP", "TTS"],
     description:"AI accessibility system converting graphs and images into speech for visually-impaired users using CNNs, OCR & TTS. Presented at ACM W4A 2024.",
     date: "Aug 2023 – Oct 2024",
-    githubLink: "https://github.com/santosh1664",
+    // githubLink: "https://github.com/santosh1664",
     award: "https://wajdialjedaani.com/certificates/AccessbilityChallenge.pdf",
     liveLink2: "https://wajdialjedaani.com/tools/tool.html?id=tool1",
     category: "AI / Accessibility",
@@ -121,16 +184,16 @@ export const projects = [
     category: "Machine Learning / Academic",
     iconName: "FaDatabase",
   },
-  {
-    title: "Pac-Man Game (Java)",
-    tech: ["Java", "Swing", "OOP"],
-    description: "Implemented a playable Pac-Man clone using Java Swing. Applied inheritance and exception handling; added game effects and a responsive GUI.",
-    date: "Feb 2021 – June 2021",
-    githubLink: null,
-    liveLink: null,
-    category: "Game Development / Academic",
-    iconName: "FaCode",
-  },
+  // {
+  //   title: "Pac-Man Game (Java)",
+  //   tech: ["Java", "Swing", "OOP"],
+  //   description: "Implemented a playable Pac-Man clone using Java Swing. Applied inheritance and exception handling; added game effects and a responsive GUI.",
+  //   date: "Feb 2021 – June 2021",
+  //   githubLink: null,
+  //   liveLink: null,
+  //   category: "Game Development / Academic",
+  //   iconName: "FaCode",
+  // },
   // {
   //   title: "Online Mobile Store",
   //   tech: ["HTML", "CSS", "Bootstrap", "PHP"],
