@@ -31,11 +31,16 @@ const Certifications = () => (
             custom={index}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <img
-              src={cert.image}
-              alt={`${cert.title} certificate`}
-              className="w-full h-auto object-cover"
-            />
+            {cert.image ? (
+              <img
+                src={cert.image}
+                alt={`${cert.title} certificate`}
+                className="w-full h-auto object-cover"
+                onError={(event) => {
+                  event.currentTarget.style.display = 'none';
+                }}
+              />
+            ) : null}
             <div className="p-6 space-y-2">
               <h3 className="text-xl font-semibold text-accent-1 font-mono">
                 {cert.title}

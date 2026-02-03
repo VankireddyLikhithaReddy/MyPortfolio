@@ -65,6 +65,10 @@ def retrieve_visa_info(query: str) -> List[Dict[str, str]]:
     return _query_collection(query, "visa", settings.top_k)
 
 
+def retrieve_compensation(query: str) -> List[Dict[str, str]]:
+    return _query_collection(query, "compensation", settings.top_k)
+
+
 def build_tools() -> List[Dict[str, object]]:
     return [
         {
@@ -127,6 +131,18 @@ def build_tools() -> List[Dict[str, object]]:
                 },
             },
         },
+        {
+            "type": "function",
+            "function": {
+                "name": "retrieve_compensation",
+                "description": "Retrieve compensation and salary expectations.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {"query": {"type": "string"}},
+                    "required": ["query"],
+                },
+            },
+        },
     ]
 
 
@@ -142,6 +158,8 @@ def _call_tool(name: str, args: Dict[str, str]) -> List[Dict[str, str]]:
         return retrieve_skills(query)
     if name == "retrieve_visa_info":
         return retrieve_visa_info(query)
+    if name == "retrieve_compensation":
+        return retrieve_compensation(query)
     return []
 
 
@@ -165,6 +183,20 @@ def _route_sources(query: str) -> List[str]:
         sources.append("skills")
     if any(token in q for token in ["visa", "opt", "stem", "sponsorship", "relocation"]):
         sources.append("visa")
+    if any(
+        token in q
+        for token in [
+            "salary",
+            "compensation",
+            "pay",
+            "package",
+            "ctc",
+            "salary range",
+            "compensation range",
+            "comp range",
+        ]
+    ):
+        sources.append("compensation")
     if any(token in q for token in ["summary", "about", "yourself", "background", "education", "certification", "contact"]):
         sources.append("resume")
     return sources or ["resume", "experience"]

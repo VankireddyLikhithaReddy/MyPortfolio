@@ -1,10 +1,15 @@
 from typing import Dict, List, Optional
-from fastapi import FastAPI
+from pathlib import Path
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from .rag import run_agent
 
 app = FastAPI()
+
+_ROOT_DIR = Path(__file__).resolve().parents[2]
+_DIST_DIR = _ROOT_DIR / "dist"
 
 app.add_middleware(
     CORSMiddleware,
@@ -48,3 +53,15 @@ async def chat(request: ChatRequest) -> ChatResponse:
     _append_memory(session_id, "user", request.message)
     _append_memory(session_id, "assistant", reply)
     return ChatResponse(reply=reply)
+
+
+if _DIST_DIR.exists():
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        file_path = _DIST_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        index_file = _DIST_DIR / "index.html"
+        if index_file.is_file():
+            return FileResponse(index_file)
+        raise HTTPException(status_code=404, detail="Frontend not built.")

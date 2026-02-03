@@ -35,7 +35,7 @@ export const certifications = [
     expires: "January 19, 2029",
     validationId: "70b6a9b194264fe6bae7094c4bb4de34",
     verifyUrl: "https://aws.amazon.com/verification",
-    image: "/aws-certified-developer-associate.png",
+    image: "",
   },
 ];
 

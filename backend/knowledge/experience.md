@@ -1,5 +1,8 @@
 # Experience
 
+Total professional experience (as of Feb 2026): approximately 3 years
+(June 2021 - July 2023 at Zensar Technologies, May 2025 - Present at Citi Group).
+
 Citi Group - Software Engineer (May 2025 - Present)
 - Designed and developed full-stack features using React.js on the frontend and Java 17, Spring Boot, and Spring Cloud on the backend within a microservices architecture.
 - Built reusable and responsive React components and integrated them with RESTful APIs for secure data flows.
