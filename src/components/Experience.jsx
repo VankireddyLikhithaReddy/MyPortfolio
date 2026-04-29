@@ -2,75 +2,82 @@ import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { experience } from '../data/portfolioData.jsx';
 import { motion } from 'framer-motion';
-
-const experienceItemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  }),
-};
+import { FaBriefcase } from 'react-icons/fa';
 
 const Experience = () => (
-  <section id="experience" className="py-20 bg-secondary-bg">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle id="experience-title">Experience</SectionTitle>
+  <section id="experience" className="py-24 bg-primary-bg">
+    <div className="container mx-auto px-5 sm:px-8 lg:px-10">
+      <SectionTitle id="experience-title">Work Experience</SectionTitle>
 
-      <div className="max-w-5xl mx-auto mt-12 space-y-8">
-        {experience.map((item, index) => (
-          <motion.div
-            key={`${item.company}-${item.role}`}
-            className="p-5 sm:p-6 bg-primary-bg rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
-            custom={index}
-            variants={experienceItemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <div>
-                <h3 className="text-md sm:text-lg lg:text-xl font-semibold text-accent-1 font-mono">
-                  {item.role}
-                </h3>
-                <p className="text-sm sm:text-md text-accent-2/90 font-semibold">
-                  {item.company}
-                  {item.location ? ` · ${item.location}` : ''}
-                </p>
+      <div className="max-w-6xl mx-auto relative">
+        {/* Gradient timeline line */}
+        <div className="timeline-line" />
+
+        <div className="space-y-12 pl-2">
+          {experience.map((item, index) => (
+            <motion.div
+              key={`${item.company}-${item.role}`}
+              className="flex gap-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22,1,0.36,1] }}
+            >
+              {/* Node */}
+              <div className="flex-shrink-0 w-12 h-12 relative z-10 rounded-2xl flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, rgb(var(--color-accent-1)/0.14), rgb(var(--color-accent-2)/0.08))',
+                  border: '2px solid rgb(var(--color-accent-1)/0.22)',
+                  color: 'rgb(var(--color-accent-1))',
+                }}
+              >
+                <FaBriefcase size={15} />
               </div>
-              <p className="text-xs sm:text-sm text-text-secondary/80 font-mono">
-                {item.duration}
-              </p>
-            </div>
 
-            {item.points?.length ? (
-              <ul className="list-disc list-inside space-y-1.5 text-text-secondary mt-3">
-                {item.points.map((point, i) => (
-                  <li key={`${item.company}-${i}`} className="text-xs sm:text-sm leading-relaxed">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-
-            {item.tech?.length ? (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {item.tech.map((tech) => (
+              {/* Card */}
+              <div className="card flex-1 p-5 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                  <div>
+                    <h3 className="text-lg font-bold text-text-primary leading-snug">{item.role}</h3>
+                    <p className="text-base font-semibold" style={{ color: 'rgb(var(--color-accent-2))' }}>
+                      {item.company}
+                      {item.location && (
+                        <span className="font-normal text-text-secondary"> · {item.location}</span>
+                      )}
+                    </p>
+                  </div>
                   <span
-                    key={`${item.company}-${tech}`}
-                    className="px-3 py-1 text-xs font-mono rounded-full bg-secondary-bg text-accent-1"
+                    className="text-xs font-mono px-3 py-1 rounded-full self-start sm:self-auto whitespace-nowrap"
+                    style={{
+                      background: 'linear-gradient(135deg, rgb(var(--color-accent-1)/0.10), rgb(var(--color-accent-2)/0.06))',
+                      color: 'rgb(var(--color-accent-1))',
+                      border: '1px solid rgb(var(--color-accent-1)/0.15)',
+                    }}
                   >
-                    {tech}
+                    {item.duration}
                   </span>
-                ))}
+                </div>
+
+                {item.points?.length > 0 && (
+                  <ul className="space-y-1.5 mb-4">
+                    {item.points.map((pt, i) => (
+                      <li key={i} className="text-base text-text-secondary flex gap-2.5 leading-relaxed">
+                        <span className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full" style={{ background: 'linear-gradient(135deg, rgb(var(--color-accent-1)), rgb(var(--color-accent-2)))' }} />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {item.tech?.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-3" style={{ borderTop: '1px solid rgb(var(--color-accent-1)/0.08)' }}>
+                    {item.tech.map(t => <span key={t} className="tech-pill">{t}</span>)}
+                  </div>
+                )}
               </div>
-            ) : null}
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

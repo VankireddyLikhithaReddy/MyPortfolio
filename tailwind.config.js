@@ -16,12 +16,8 @@ export default {
         'text-secondary': 'rgb(var(--color-text-secondary) / <alpha-value>)',
       },
       fontFamily: {
-        // MODIFICATION: Set JetBrains Mono as the default sans-serif font
-        sans: ['"JetBrains Mono"', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
-        // The mono utility will also use JetBrains Mono, which is fine.
-        // You can keep it explicit or rely on sans being JetBrains Mono now.
-        // For clarity, keeping it explicit:
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+        sans: ['Sora', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       animation: { // Your existing animations
         'text-focus-in': 'text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both',

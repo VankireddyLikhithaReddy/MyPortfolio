@@ -1,4 +1,4 @@
-# Durgasantosh G — Portfolio
+# Likhitha Reddy Vankireddy — Portfolio
 
 React + Vite portfolio showcasing skills, projects, and experience with a light/dark theme toggle.
 

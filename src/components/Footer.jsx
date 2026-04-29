@@ -1,17 +1,25 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData.jsx';
-import { FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
   return (
-    <footer className="py-8 bg-secondary-bg text-center">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer
+      className="py-8 text-center"
+      style={{
+        background: 'var(--nav-bg)',
+        backdropFilter: 'var(--nav-blur)',
+        WebkitBackdropFilter: 'var(--nav-blur)',
+        borderTop: '1px solid var(--nav-border)',
+      }}
+    >
+      <div className="container mx-auto px-5">
         <p className="text-sm text-text-secondary font-mono">
-          Designed & Built with <FaHeart className="inline text-accent-2" /> by {personalInfo.name}
+          Designed &amp; built by{' '}
+          <span className="font-semibold gradient-text">{personalInfo.name}</span>
         </p>
-        <p className="text-xs text-text-secondary font-mono mt-1">
-          © {currentYear} Durgasantosh. All rights reserved.
+        <p className="text-xs text-text-secondary opacity-50 mt-1 font-mono">
+          © {year} · All rights reserved
         </p>
       </div>
     </footer>

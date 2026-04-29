@@ -2,69 +2,83 @@ import React from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { personalInfo, education } from '../data/portfolioData.jsx';
 import { motion } from 'framer-motion';
-import { FaUniversity, FaSchool } from 'react-icons/fa'; // Example icons
+import { FaGraduationCap, FaMedal, FaLaptopCode, FaMapMarkerAlt } from 'react-icons/fa';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: i => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-    },
-  }),
-};
 
-const About = () => {
-  return (
-    <section id="about" className="py-20 bg-secondary-bg">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle id="about-title">About Me</SectionTitle>
-        
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-lg text-text-secondary leading-relaxed">
-           Hi, I'm Durgasantosh — a software engineer skilled in building scalable, user-focused applications. I love solving real-world problems through technology and thrive in collaborative, fast-paced environments.
-          </p>
-          {/* <p className="text-lg text-text-secondary leading-relaxed mt-4">
-            Outside of code, you'll find me shooting photos—capturing street scenes, candid moments, and campus life, then polishing them in Lightroom. It's my way to stay curious about composition, light, and storytelling.
-          </p> */}
-        </motion.div>
 
-        <h3 className="text-2xl font-semibold text-center text-accent-1 mb-8 font-mono">Education</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center justify-center">
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              className="w-full max-w-sm bg-primary-bg p-6 rounded-lg shadow-xl hover:shadow-accent-1/20 transition-shadow duration-300"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              custom={index}
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <div className="flex items-center mb-3">
-                {edu.institution.toLowerCase().includes("university") ? 
-                  <FaUniversity className="text-accent-1 mr-3 text-2xl" /> : 
-                  <FaSchool className="text-accent-1 mr-3 text-2xl" />
-                }
-                <h4 className="text-xl font-semibold text-text-primary">{edu.institution}</h4>
+const About = () => (
+  <section id="about" className="py-24 section-alt">
+    <div className="container mx-auto px-5 sm:px-8 lg:px-10">
+      <SectionTitle id="about-title">About Me</SectionTitle>
+
+
+
+      {/* Bio */}
+      <motion.p
+        className="text-center text-base sm:text-lg text-text-secondary leading-relaxed max-w-3xl mx-auto mb-16"
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        Hi, I'm{' '}
+        <span className="font-semibold text-text-primary">Likhitha</span> — a software developer
+        specializing in full-stack web engineering with hands-on experience at{' '}
+        <span className="font-semibold" style={{ color: 'rgb(var(--color-accent-1))' }}>Capgemini</span>.
+        I build enterprise-grade applications using React.js, Python, Java, FastAPI, and cloud-native stacks —
+        focused on performance, clean architecture, and delivering real business value.
+      </motion.p>
+
+      {/* Education */}
+      <h3 className="text-lg font-bold text-center text-text-primary mb-7 flex items-center justify-center gap-2.5">
+        <span style={{ color: 'rgb(var(--color-accent-1))' }}><FaGraduationCap size={20} /></span>
+        Education
+      </h3>
+
+      <div className="grid sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {education.map((edu, i) => (
+          <motion.div
+            key={i}
+            className="card p-6"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.12 }}
+          >
+            {/* Degree badge */}
+            <div className="flex items-start gap-3 mb-3">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{
+                  background: 'linear-gradient(135deg, rgb(var(--color-accent-1)/0.12), rgb(var(--color-accent-2)/0.08))',
+                  color: 'rgb(var(--color-accent-1))',
+                }}
+              >
+                <FaGraduationCap size={17} />
               </div>
-              <p className="text-text-secondary font-medium">{edu.degree}</p>
-              <p className="text-sm text-text-secondary font-mono">{edu.duration}</p>
-              <p className="text-sm text-accent-1 font-mono mt-1">{edu.score}</p>
-            </motion.div>
-          ))}
-        </div>
+              <div className="flex-1 min-w-0">
+                <h4 className="font-bold text-text-primary text-base leading-snug">{edu.institution}</h4>
+                <p className="text-sm text-text-secondary mt-0.5 leading-snug">{edu.degree}</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <span
+                className="text-xs font-mono px-2.5 py-1 rounded-full"
+                style={{ background: 'rgb(var(--color-accent-1)/0.08)', color: 'rgb(var(--color-accent-1))' }}
+              >
+                {edu.duration}
+              </span>
+              {edu.score && (
+                <span className="badge-accent">
+                  <FaMedal size={10} /> {edu.score}
+                </span>
+              )}
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

@@ -1,126 +1,128 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { personalInfo, socialLinks } from '../data/portfolioData.jsx';
-import { FaDownload, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaDownload, FaLinkedin, FaGithub, FaEnvelope, FaArrowDown } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import { motion } from 'framer-motion';
 
-// Map icon names to components for social links
-const heroSocialIconMap = {
-  FaLinkedin,
-  FaGithub,
-  FaEnvelope,
+const socialIconMap = { FaLinkedin, FaGithub, FaEnvelope };
+const getIcon = (name, size = 18) => {
+  const Icon = socialIconMap[name];
+  return Icon ? <Icon size={size} /> : null;
 };
 
-const getHeroSocialIcon = (iconName, size = 28) => {
-  const IconComponent = heroSocialIconMap[iconName];
-  return IconComponent ? <IconComponent size={size} /> : null;
-};
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 22 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+});
 
-const Hero = () => {
-  return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-primary-bg relative overflow-hidden">
-      {/* Optional: Subtle background elements if you want */}
-      {/* <div className="absolute inset-0 opacity-5">
-        <img src="/path/to/subtle-code-pattern.svg" alt="background pattern" className="w-full h-full object-cover"/>
-      </div> */}
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+const Hero = () => (
+  <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-primary-bg">
+    {/* Grid */}
+    <div className="hero-grid" aria-hidden="true" />
+    {/* Blobs */}
+    <div className="hero-blob hero-blob-1" aria-hidden="true" />
+    <div className="hero-blob hero-blob-2" aria-hidden="true" />
+
+    <div className="container mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
+      <div className="max-w-3xl mx-auto text-center">
+
+
+
+        {/* Name */}
+        <motion.h1
+          {...fadeUp(0.08)}
+          className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-text-primary tracking-tight mb-4 leading-[1.1]"
         >
-          <h3 className="text-accent-1 font-mono text-lg sm:text-xl mb-3">
-            Hi, my name is
-          </h3>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold text-text-primary mb-4">
-            {personalInfo.name}
-          </h1>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-secondary mb-6">
-            <TypeAnimation
-              sequence={[
-              'I improve performance and scalability.',
-              2000,
-              'I design cloud-native systems.',
-              2000,
-              'I work with Java, Python & React.',
-              2000,
-              'I automate CI/CD pipelines.',
-              2000,
-             'I solve real-world engineering problems.',
-              2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              className="font-mono"
-            />
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto mb-8 text-base sm:text-lg">
-            {personalInfo.bio}
-          </p>
+          {personalInfo.name}
+        </motion.h1>
+
+        {/* Typing */}
+        <motion.div {...fadeUp(0.16)} className="mb-5 h-9 flex items-center justify-center">
+          <TypeAnimation
+            sequence={[
+              'I build full-stack web applications.', 2000,
+              'I craft scalable REST APIs.',           2000,
+              'I work with React · Python · Java.',   2000,
+              'I deploy with Docker & CI/CD.',         2000,
+              'I solve real engineering problems.',    2000,
+            ]}
+            wrapper="span"
+            speed={58}
+            repeat={Infinity}
+            style={{
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: '1.1rem',
+              fontWeight: 500,
+              color: 'rgb(var(--color-text-secondary))',
+              letterSpacing: '-0.02em',
+            }}
+          />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12"
+        {/* Bio */}
+        <motion.p
+          {...fadeUp(0.24)}
+          className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          <ScrollLink
-            to="projects"
-            smooth={true}
-            duration={500}
-            offset={-70}
-            className="px-8 py-3 font-mono text-lg bg-accent-1 text-primary-bg rounded-md hover:bg-opacity-80 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-accent-1/30"
-          >
-            View My Work
+          {personalInfo.bio}
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div {...fadeUp(0.32)} className="flex flex-wrap justify-center gap-4 mb-12">
+          <ScrollLink to="projects" smooth duration={500} offset={-70} className="btn-primary cursor-pointer">
+            View Projects
           </ScrollLink>
-          <a
-            href={personalInfo.resumeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 font-mono text-lg border-2 border-accent-1 text-accent-1 rounded-md hover:bg-accent-1 hover:text-primary-bg transition-all duration-300 flex items-center shadow-lg hover:shadow-accent-1/30"
-          >
-            <FaDownload className="mr-2" /> Download CV
+          <a href={personalInfo.resumeLink} target="_blank" rel="noopener noreferrer" className="btn-outline">
+            <FaDownload size={14} />
+            Download CV
           </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center space-x-6"
-        >
-          {Object.values(socialLinks).map((link, index) => (
+        {/* Social icons */}
+        <motion.div {...fadeUp(0.40)} className="flex justify-center gap-3">
+          {Object.values(socialLinks).map((link, i) => (
             <a
-              key={index}
+              key={i}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary hover:text-accent-1 transition-colors"
-              aria-label={link.url.split(':')[0]}
+              aria-label={link.url}
+              className="w-10 h-10 rounded-xl flex items-center justify-center border transition-all duration-200"
+              style={{ color: 'rgb(var(--color-text-secondary))', borderColor: 'rgb(var(--color-text-secondary)/0.20)' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = 'rgb(var(--color-accent-1))';
+                e.currentTarget.style.borderColor = 'rgb(var(--color-accent-1)/0.40)';
+                e.currentTarget.style.background = 'rgb(var(--color-accent-1)/0.07)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = 'rgb(var(--color-text-secondary))';
+                e.currentTarget.style.borderColor = 'rgb(var(--color-text-secondary)/0.20)';
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
-              {getHeroSocialIcon(link.iconName, 28)}
+              {getIcon(link.iconName)}
             </a>
           ))}
         </motion.div>
       </div>
-      
-      {/* Scroll down indicator (optional) */}
-      <ScrollLink 
-        to="about" 
-        smooth={true} 
-        duration={800} 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </ScrollLink>
-    </section>
-  );
-};
+    </div>
+
+    {/* Scroll cue */}
+    <ScrollLink
+      to="about" smooth duration={700}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer flex flex-col items-center gap-1.5 animate-bounce"
+      style={{ color: 'rgb(var(--color-accent-1)/0.5)' }}
+    >
+      <span style={{ fontFamily: '"IBM Plex Mono"', fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+        scroll
+      </span>
+      <FaArrowDown size={12} />
+    </ScrollLink>
+  </section>
+);
 
 export default Hero;
