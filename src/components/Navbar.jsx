@@ -8,9 +8,9 @@ const navItems = [
   { name: 'About', to: 'about' },
   { name: 'Skills', to: 'skills' },
   { name: 'Projects', to: 'projects' },
-  { name: 'Certs', to: 'certifications' },
+  // { name: 'Certs', to: 'certifications' },
   { name: 'Experience', to: 'experience' },
-  { name: 'Leadership', to: 'involvement' },
+  // { name: 'Leadership', to: 'involvement' },
   { name: 'Contact', to: 'contact' },
 ];
 
@@ -33,17 +33,17 @@ const Navbar = () => {
 
   useEffect(() => {
     let lastScroll = window.scrollY;
-    
+
     const onScroll = () => {
       const currentScroll = window.scrollY;
       setIsScrolled(currentScroll > 40);
-      
+
       if (currentScroll > lastScroll && currentScroll > 80 && !isOpen) {
         setIsHidden(true);
       } else {
         setIsHidden(false);
       }
-      
+
       lastScroll = currentScroll;
     };
 

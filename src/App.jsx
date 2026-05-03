@@ -8,7 +8,8 @@ import Experience from './components/Experience';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
+import ResumeChatWidget from './components/ResumeChatWidget';
+// import ScrollToTop from './components/ScrollToTop';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import CustomCursor from './components/CustomCursor';
 
@@ -35,7 +36,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
+      <ResumeChatWidget />
+      {/* <ScrollToTop /> */}
     </div>
   );
 }
