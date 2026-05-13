@@ -4,10 +4,10 @@ export const resumeProfile = {
   location: "Dallas, Texas, USA",
   openToRelocation: true,
   summary:
-    "My name is Likhitha Reddy Vankireddy. I am a Software Developer with over 3 years of experience designing, developing, testing, and deploying scalable web applications, enterprise platforms, and cloud-based solutions. I previously worked at Capgemini where I built scalable systems using React, JavaScript, Python, Django, FastAPI, and PostgreSQL. I am currently pursuing a Master’s degree in Computer Science at the University of North Texas.",
+    "My name is Likhitha Reddy Vankireddy. I am a Software Developer with over 3 years of experience designing, developing, testing, and deploying scalable web applications, enterprise platforms, and cloud-based solutions. I previously worked at Capgemini where I built scalable systems using React, JavaScript, Python, Django, FastAPI, and PostgreSQL. I recently graduated with a Master’s degree in Computer Science from the University of North Texas."
   experience: "I have over 3 years of professional experience as a Software Developer.",
   currentJob:
-    "I am currently a Master's student in Computer Science at the University of North Texas. Previously, I worked at Capgemini as a Software Developer, building enterprise applications using React, Python, Django, FastAPI, and PostgreSQL.",
+    "I recently graduated with a Master’s degree in Computer Science from the University of North Texas. Previously, I worked at Capgemini as a Software Developer, where I built enterprise applications and scalable backend systems using React, Python, Django, FastAPI, and PostgreSQL."
   project:
     "One of my key projects is Accessible Weather & Shelter Finder, a MERN stack web application to help users locate nearby shelters during severe weather conditions, featuring responsive and accessible user interfaces.",
   skills:
