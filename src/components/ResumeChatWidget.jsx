@@ -49,7 +49,7 @@ const questionCategories = [
     title: 'Education & Certifications',
     questions: [
       'What is your highest qualification?',
-      'Where are you completing your master’s degree?',
+      "Where are you completing your master's degree?",
       'Do you have any certifications?',
     ],
   },
